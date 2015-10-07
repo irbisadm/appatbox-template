@@ -13,7 +13,7 @@ module.exports = function (grunt) {
         ]
       },
       dist: {
-        src: ['src/css/reset.css', 'src/css/style.css'],
+        src: ['assets/css/style.raw.css'],
         dest: 'assets/css/style.css'
       }
     },
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
       },
       postcss: {
         files: ['src/css/*.css'],
-        tasks: ['postcss'],
+        tasks: ['concat','postcss'],
         options: {
           spawn: false
         }
@@ -53,8 +53,8 @@ module.exports = function (grunt) {
         }
       },
       js: {
-        files: ['src/js/*.png', 'src/img/*.jpg', 'src/img/*.gif'],
-        tasks: ['concat'],
+        files: ['src/js/*.js'],
+        tasks: ['concat','uglify'],
         options: {
           spawn: false
         }
@@ -64,6 +64,10 @@ module.exports = function (grunt) {
       js: {
         src: ['src/js/*.js'],
         dest: 'assets/js/pack.js'
+      },
+      css:{
+        src:['src/css/*.css'],
+        dest:'assets/css/style.raw.css'
       }
     },
     uglify: {
@@ -92,5 +96,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('default', ['newer:imagemin', 'postcss', 'jade', 'concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['newer:imagemin', 'jade', 'concat','postcss', 'uglify', 'watch']);
 }
