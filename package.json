@@ -1,6 +1,6 @@
 {
   "name": "appatbox-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
     "browserslist": "^1.0.0",
