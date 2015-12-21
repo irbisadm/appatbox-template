@@ -9,7 +9,7 @@
 ## Начало работы
 
 ```shell
-git clone git@github.com:irbisadm/appatbox-template.git
+git clone git@gitlab.com:irbisadm/appatbox-template.git
 cd appatbox-template
 git remote remove origin
 npm install --save-dev
