@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         },
         processors: [
           require('pixrem')(),
-          require('autoprefixer-core')({browsers: 'last 3 versions'}),
+          require('autoprefixer')({browsers: 'last 3 versions'}),
           require('cssnano')()
         ]
       },
@@ -24,15 +24,29 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: './src/jade',
-          src: "./*.jade",
+          cwd: './src/jade/',
+          src: "**/*.jade",
           ext: '.html'
+        }]
+      }
+    },
+    htmlmin: {
+      prod: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand: true,
+          cwd: './',
+          src: '*.html',
+          dest: "./"
         }]
       }
     },
     watch: {
       jade: {
-        files: ['src/jade/*.jade', 'src/jade/include/*.jade'],
+        files: ['src/jade/*.jade', 'src/jade/include/*.jade', 'src/jade/mail/*.jade'],
         tasks: ['jade'],
         options: {
           spawn: false
@@ -93,8 +107,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('default', ['newer:imagemin', 'jade', 'concat','postcss', 'uglify', 'watch']);
+  grunt.registerTask('default', ['newer:imagemin', 'jade', 'concat', 'postcss', 'uglify']);
+
+  grunt.registerTask('watch', ['default', 'watch']);
+
+  grunt.registerTask('publish', ['default', 'htmlmin']);
 }

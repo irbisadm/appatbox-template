@@ -1,0 +1,1 @@
+Directory for mail templates. Support only flatten structure.
