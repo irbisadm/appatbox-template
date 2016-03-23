@@ -45,11 +45,15 @@ npm install --save-dev
 
 ### Разовая генерация 
 ```shell
-grunt default
+grunt build
+```
+### Полная перегенерация 
+```shell
+grunt build
 ```
 ### Watcher для активной работы
 ```shell
-grunt watch
+grunt
 ```
 ### Publish с минификацией html (для сборки статических сайтов)
 ```shell
