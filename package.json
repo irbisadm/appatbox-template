@@ -1,6 +1,16 @@
 {
   "name": "appatbox-template",
-  "version": "1.0.1",
+  "version": "1.0.3",
+  "homepage": "https://irbisadm.ru/appatbox-template",
+  "bugs": {
+    "url": "https://github.com/owner/project/issues",
+    "email": "i@irbisadm.ru"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/irbisadm/appatbox-template"
+  },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
     "browserslist": "^1.0.0",
@@ -22,5 +32,10 @@
     "pixrem": "^3.0.0",
     "postcss": "^5.0.6",
     "reduce-css-calc": "^1.2.0"
+  },
+  "dependencies": {
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-htmlmin": "^1.1.0",
+    "postcss-nested": "^1.0.0"
   }
 }

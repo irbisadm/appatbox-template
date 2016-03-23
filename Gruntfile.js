@@ -1,5 +1,8 @@
 module.exports = function (grunt) {
   grunt.initConfig({
+    clean: {
+      dist: ['assets/*', 'include/*', '*.html']
+    },
     postcss: {
       options: {
         map: {
@@ -7,6 +10,7 @@ module.exports = function (grunt) {
           annotation: 'assets/map/'
         },
         processors: [
+          require('postcss-nested'),
           require('pixrem')(),
           require('autoprefixer')({browsers: 'last 3 versions'}),
           require('cssnano')()
@@ -109,11 +113,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('default', ['newer:imagemin', 'jade', 'concat', 'postcss', 'uglify']);
-
-  grunt.registerTask('watch', ['default', 'watch']);
-
-  grunt.registerTask('publish', ['default', 'htmlmin']);
-}
+  grunt.registerTask('build', ['newer:imagemin', 'jade', 'concat', 'postcss', 'uglify']);
+  grunt.registerTask('rebuild', ['clean', 'build']);
+  grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('publish', ['build', 'htmlmin']);
+};

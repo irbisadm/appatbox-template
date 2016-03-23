@@ -1,5 +1,14 @@
-# AppAtBox project template v1.0.2
+# AppAtBox project template v1.0.3
 > Стартовый шаблон для быстрого начала работы над проектом
+
+## Что нового в версии 1.0.3
+ - Добавлен postcss-nested
+ - normalize.css отделен от bootstrap grid
+ - normalize.css обновлен до  v4.0.0
+ - Исправлены ошибки Grunt
+   - цель watch выделена в default
+   - разовая сборка переназвана build 
+   - создана цель rebuild для пересборки проекта на чисто.
 
 ## Что нового в версии 1.0.2
  - Удалены генерируемые файлы
