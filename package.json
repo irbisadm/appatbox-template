@@ -6,7 +6,7 @@
     "url": "https://github.com/owner/project/issues",
     "email": "i@irbisadm.ru"
   },
-  "license": "MIT",
+  "license": "WTFPL",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/irbisadm/appatbox-template"

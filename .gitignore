@@ -129,7 +129,7 @@ build/Release
 node_modules
 
 # Ignore builded files
-assets/
+/assets/
 *.html
-include/
-mail/
+/include/
+/mail/
