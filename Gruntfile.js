@@ -3,6 +3,13 @@ module.exports = function (grunt) {
     clean: {
       dist: ['assets/*', 'include/*', '*.html']
     },
+    copy:{
+      svg:{
+        files:[
+          {expand: true, flatten: true, src: ['src/svg/**'], dest: 'assets/svg/', filter: 'isFile'}
+        ]
+      }
+    },
     postcss: {
       options: {
         map: {
@@ -70,6 +77,13 @@ module.exports = function (grunt) {
           spawn: false
         }
       },
+      imgsvg: {
+        files: ['src/svg/*.svg'],
+        tasks: ['copy:svg'],
+        options: {
+          spawn: false
+        }
+      },
       js: {
         files: ['src/js/*.js'],
         tasks: ['concat','uglify'],
@@ -114,9 +128,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('build', ['newer:imagemin', 'jade', 'concat', 'postcss', 'uglify']);
+  grunt.registerTask('build', ['newer:imagemin', 'jade','copy', 'concat', 'postcss', 'uglify']);
   grunt.registerTask('rebuild', ['clean', 'build']);
   grunt.registerTask('default', ['build', 'watch']);
   grunt.registerTask('publish', ['build', 'htmlmin']);
