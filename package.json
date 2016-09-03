@@ -1,9 +1,9 @@
 {
   "name": "appatbox-template",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "homepage": "https://irbisadm.ru/appatbox-template",
   "bugs": {
-    "url": "https://github.com/owner/project/issues",
+    "url": "https://gitlab.com/irbisadm/appatbox-template/issues",
     "email": "i@irbisadm.ru"
   },
   "license": "WTFPL",
@@ -23,9 +23,9 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^1.4.0",
     "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-newer": "^1.2.0",

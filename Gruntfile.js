@@ -28,15 +28,15 @@ module.exports = function (grunt) {
         dest: 'assets/css/style.css'
       }
     },
-    jade: {
+    pug: {
       compile: {
         options: {
           pretty: true
         },
         files: [{
           expand: true,
-          cwd: './src/jade/',
-          src: "**/*.jade",
+          cwd: './src/pug/',
+          src: "**/*.pug",
           ext: '.html'
         }]
       }
@@ -56,15 +56,15 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      jade: {
-        files: ['src/jade/*.jade', 'src/jade/include/*.jade', 'src/jade/mail/*.jade'],
-        tasks: ['jade'],
+      pug: {
+        files: ['src/pug/*.pug', 'src/pug/pages/*.pug','src/pug/templates/*.pug', 'src/pug/mail/*.pug'],
+        tasks: ['pug'],
         options: {
           spawn: false
         }
       },
       postcss: {
-        files: ['src/css/*.css'],
+        files: ['src/css/*.pcss'],
         tasks: ['concat','postcss'],
         options: {
           spawn: false
@@ -98,7 +98,7 @@ module.exports = function (grunt) {
         dest: 'assets/js/pack.js'
       },
       css:{
-        src:['src/css/*.css'],
+        src:['src/css/*.pcss'],
         dest:'assets/css/style.raw.css'
       }
     },
@@ -121,7 +121,7 @@ module.exports = function (grunt) {
     }
   });
   grunt.loadNpmTasks('grunt-postcss');
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -131,7 +131,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-newer');
 
-  grunt.registerTask('build', ['newer:imagemin', 'jade','copy', 'concat', 'postcss', 'uglify']);
+  grunt.registerTask('build', ['newer:imagemin', 'pug','copy', 'concat', 'postcss', 'uglify']);
   grunt.registerTask('rebuild', ['clean', 'build']);
   grunt.registerTask('default', ['build', 'watch']);
   grunt.registerTask('publish', ['build', 'htmlmin']);

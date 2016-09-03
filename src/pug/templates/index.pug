@@ -1,0 +1,52 @@
+//Created by irbisadm on 30/07/16.
+- var soc_fb_app_id = 'your_app_id';
+- var soc_tw_site = '@website-username';
+block vars
+  - var title ="New project";
+  - var soc_title = "New project";
+  - var soc_description = "New project description";
+  - var soc_image = "http://example.org/assets/img/soc_image.jpg";
+  - var soc_image_alt = "New project alt text";
+  - var soc_url = "http://example.org/index.html";
+  - var meta_description ='';
+  - var meta_keywords='';
+  - var noindex=true;
+doctype html
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    if meta_description
+      meta(name='description', content=meta_description)
+    if meta_keywords
+      meta(name='keywords', content=meta_keywords)
+    if noindex
+      meta(name='robots', content='noindex,nofollow')
+    link(rel="stylesheet",href="assets/css/style.css")
+    if soc_title
+      meta(property='og:title', content=soc_title)
+    if soc_description
+      meta(property='og:description', content=soc_description)
+    if soc_image
+      meta(property='og:image', content=soc_image)
+    if soc_url
+      meta(property='og:url', content=soc_url)
+    if soc_image
+      meta(name='twitter:card', content='summary_large_image')
+    if soc_title
+      meta(name='og:site_name', content=soc_title)
+    if soc_image_alt
+      meta(name='twitter:image:alt', content=soc_image_alt)
+    if soc_fb_app_id
+      meta(property='fb:app_id', content=soc_fb_app_id)
+    if soc_tw_site
+      meta(name='twitter:site', content=soc_tw_site)
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&subset=cyrillic', rel='stylesheet')
+  body
+    block content
+    noscript
+      div
+        img(src="https://mc.yandex.ru/watch/8066236",style="position:absolute; left:-9999px;",alt="")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script(src='/assets/js/pack.min.js')
