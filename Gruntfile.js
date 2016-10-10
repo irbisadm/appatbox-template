@@ -1,12 +1,12 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     clean: {
-      dist: ['assets/*', 'include/*', '*.html']
+      dist: ['build/assets/*', 'include/*', '*.html']
     },
     copy:{
       svg:{
         files:[
-          {expand: true, flatten: true, src: ['src/svg/**'], dest: 'assets/svg/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['src/svg/**'], dest: 'build/assets/svg/', filter: 'isFile'}
         ]
       }
     },
@@ -14,18 +14,19 @@ module.exports = function (grunt) {
       options: {
         map: {
           inline: false,
-          annotation: 'assets/map/'
+          annotation: 'build/assets/map/'
         },
         processors: [
           require('postcss-nested'),
+          require('postcss-simple-vars'),
           require('pixrem')(),
           require('autoprefixer')({browsers: 'last 3 versions'}),
           require('cssnano')()
         ]
       },
       dist: {
-        src: ['assets/css/style.raw.css'],
-        dest: 'assets/css/style.css'
+        src: ['build/assets/css/style.raw.css'],
+        dest: 'build/assets/css/style.css'
       }
     },
     pug: {
@@ -95,17 +96,17 @@ module.exports = function (grunt) {
     concat: {
       js: {
         src: ['src/js/*.js'],
-        dest: 'assets/js/pack.js'
+        dest: 'build/assets/js/pack.js'
       },
       css:{
         src:['src/css/*.pcss'],
-        dest:'assets/css/style.raw.css'
+        dest:'build/assets/css/style.raw.css'
       }
     },
     uglify: {
       my_target: {
         files: {
-          'assets/js/pack.min.js': ['assets/js/pack.js']
+          'build/assets/js/pack.min.js': ['build/assets/js/pack.js']
         }
       }
     },
@@ -115,7 +116,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'src/img',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'assets/img/'
+          dest: 'build/assets/img/'
         }]
       }
     }
