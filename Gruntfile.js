@@ -38,6 +38,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: './src/pug/',
           src: "**/*.pug",
+          dest:'./build/',
           ext: '.html'
         }]
       }
@@ -50,9 +51,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: './',
+          cwd: './build/',
           src: '*.html',
-          dest: "./"
+          dest: "./build/"
         }]
       }
     },
